@@ -6,9 +6,9 @@ import com.cucumber.framework.helper.PageObject.homepage.HomePage;
 import com.cucumber.framework.helper.PageObject.itemsbag.ItemsBag;
 import com.cucumber.framework.helper.PageObject.userdetails.Userdetails;
 import com.cucumber.framework.settings.ObjectRepo;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
 
 public class LaptopCart {
 

@@ -37,7 +37,7 @@ public class ChromeBrowser {
 
 	public WebDriver getChromeDriver(Capabilities cap) {
 		System.setProperty("webdriver.chrome.driver",
-				ResourceHelper.getResourcePath("driver/chromedriver.exe"));
+				ResourceHelper.getResourcePath("driver/chromedriver"));
 		System.setProperty("webdriver.chrome.logfile",
 				ResourceHelper.getResourcePath("logs/chromelogs/")
 						+ "chromelog" + DateTimeHelper.getCurrentDateTime()

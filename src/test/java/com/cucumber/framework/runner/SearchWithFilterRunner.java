@@ -5,8 +5,8 @@
  */
 package com.cucumber.framework.runner;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.AbstractTestNGCucumberTests;
+import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(features = { "classpath:featurefile/SearchWithFilter.feature" }, glue = {
 		"classpath:com.cucumber.framework.stepdefinition",

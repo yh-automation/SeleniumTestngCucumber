@@ -59,7 +59,7 @@ public class CucumberReport implements ISuiteListener {
 			List<String> jsonFiles = Arrays.asList(fileNames);
 
 			Configuration configuration = new Configuration(reportOutputDirectory, suite.getName());
-			configuration.setStatusFlags(true, true, true);
+			//configuration.setStatusFlags(true, true, true);
 
 			ReportBuilder reportBuilder = new ReportBuilder(jsonFiles, configuration);
 			reportBuilder.generateReports();

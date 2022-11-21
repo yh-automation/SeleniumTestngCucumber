@@ -63,7 +63,7 @@ public class PropertyFileReader implements IconfigReader {
 	}
 
 	public int getImplicitWait() {
-		return Integer.parseInt(prop.getProperty("ImplcitWait"));
+		return Integer.parseInt(prop.getProperty("ImplicitWait"));
 	}
 
 	public int getExplicitWait() {
