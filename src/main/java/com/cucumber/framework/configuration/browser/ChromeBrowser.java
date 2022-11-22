@@ -27,36 +27,12 @@ import com.cucumber.framework.utility.ResourceHelper;
  */
 public class ChromeBrowser {
 
-    public Capabilities getChromeCapabilities() {
-        ChromeOptions option = new ChromeOptions();
-        option.addArguments("start-maximized");
-        DesiredCapabilities chrome = new DesiredCapabilities();
-        chrome.setJavascriptEnabled(true);
-        chrome.setCapability(ChromeOptions.CAPABILITY, option);
-        return chrome;
-    }
-
-    public WebDriver getChromeDriver(Capabilities cap) {
-        System.setProperty("webdriver.chrome.driver",
-                ResourceHelper.getResourcePath("driver/chromedriver"));
-        System.setProperty("webdriver.chrome.logfile",
-                ResourceHelper.getResourcePath("logs/chromelogs/")
-                        + "chromelog" + DateTimeHelper.getCurrentDateTime()
-                        + ".log");
-        ChromeOptions options = new ChromeOptions();
-        // Proxy proxy = new Proxy();
-        // proxy.setHttpProxy("myhttpproxy:3337");
-        // options.setCapability("proxy", proxy);
-        // options.addArguments("--headless");
-        // options.addArguments("--disable-gpu");
-        // options.setAcceptInsecureCerts(true);
-        // options.addArguments("--allow-insecure-localhost");
-        // options.addArguments("--lang=fr-CA");
-        options.addArguments("--start-maximized");
+    public MutableCapabilities getBrowserOptions() {
         //setting options
+        ChromeOptions options = new ChromeOptions();
         options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
         if (Boolean.parseBoolean(System.getProperty("headlessMode"))) {
-            options.setHeadless(false);
+            options.setHeadless(true);
         }
         options.addArguments("--start-maximized");
         options.addArguments("--no-sandbox");
@@ -64,11 +40,60 @@ public class ChromeBrowser {
         options.addArguments("--window-size=1920x1080");
         options.setAcceptInsecureCerts(true);
         options.setCapability("profile.password_manager_enabled", "false");
-        return new ChromeDriver(options);
+        return options;
     }
 
-    public WebDriver getChromeDriver(String hubUrl, Capabilities cap) throws MalformedURLException {
-        return new RemoteWebDriver(new URL(hubUrl), cap);
+    public WebDriver getChromeDriver(MutableCapabilities options) {
+        System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
+        System.setProperty("webdriver.chrome.logfile",
+                ResourceHelper.getResourcePath("logs/chromelogs/")
+                        + "chromelog" + DateTimeHelper.getCurrentDateTime()
+                        + ".log");
+        return new ChromeDriver((ChromeOptions) options);
     }
+
+//    public Capabilities getChromeCapabilities() {
+//        ChromeOptions option = new ChromeOptions();
+//        option.addArguments("start-maximized");
+//        DesiredCapabilities chrome = new DesiredCapabilities();
+//        chrome.setJavascriptEnabled(true);
+//        chrome.setCapability(ChromeOptions.CAPABILITY, option);
+//        return chrome;
+//    }
+
+//    public WebDriver getChromeDriver(Capabilities cap) {
+//        System.setProperty("webdriver.chrome.driver",
+//                ResourceHelper.getResourcePath("driver/chromedriver"));
+//        System.setProperty("webdriver.chrome.logfile",
+//                ResourceHelper.getResourcePath("logs/chromelogs/")
+//                        + "chromelog" + DateTimeHelper.getCurrentDateTime()
+//                        + ".log");
+//        ChromeOptions options = new ChromeOptions();
+//        // Proxy proxy = new Proxy();
+//        // proxy.setHttpProxy("myhttpproxy:3337");
+//        // options.setCapability("proxy", proxy);
+//        // options.addArguments("--headless");
+//        // options.addArguments("--disable-gpu");
+//        // options.setAcceptInsecureCerts(true);
+//        // options.addArguments("--allow-insecure-localhost");
+//        // options.addArguments("--lang=fr-CA");
+//        options.addArguments("--start-maximized");
+//        //setting options
+//        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+//        if (Boolean.parseBoolean(System.getProperty("headlessMode"))) {
+//            options.setHeadless(false);
+//        }
+//        options.addArguments("--start-maximized");
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--window-size=1920x1080");
+//        options.setAcceptInsecureCerts(true);
+//        options.setCapability("profile.password_manager_enabled", "false");
+//        return new ChromeDriver(options);
+//    }
+
+//    public WebDriver getChromeDriver(String hubUrl, Capabilities cap) throws MalformedURLException {
+//        return new RemoteWebDriver(new URL(hubUrl), cap);
+//    }
 
 }
