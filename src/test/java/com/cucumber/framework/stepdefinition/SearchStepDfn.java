@@ -25,12 +25,15 @@ public class SearchStepDfn {
 	private HomePage hPage;
 
 	@Given("I am at the home page")
-	public void i_am_at_the_home_page() {
+	public void i_am_at_the_home_page() throws InterruptedException {
 		// Write code here that turns the phrase above into concrete actions
 		System.out.println("HA-HA");
 		ObjectRepo.driver.get(ObjectRepo.reader.getWebsite());
 		hPage = new HomePage(ObjectRepo.driver);
+		System.out.println("HA-HA222");
 		ObjectRepo.data.put("HomePage", hPage);
+		System.out.println("HA-HA333");
+		Thread.sleep(5000);
 	}
 
 	@Given("^: I am at the home page$")

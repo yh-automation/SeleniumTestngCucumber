@@ -1,8 +1,16 @@
 ### Selenium Framework with Cucumber
+FIXES:
+1. Java 11, Selenium-3, TestNg-6, using Firefox;
+2. ability to run individual tests in IntelliJ;
+3. ability to run tests via <Feature>Runner.java in IntelliJ
+(src/test/java/com/cucumber/framework/runner/SearchFeatureRunner.java)
+4. ability to run tests via testng.xml in IntelliJ
+(src/test/java/com/cucumber/framework/testng/testng.xml)
+5. ability to run tests via maven-command-line: mvn clean test
 
 BDD framework for automation using Selenium Cucumber and TestNg
 
-The framework has following features 
+The framework has the following features 
 
 1. Modular Design
 2. Maven based framework
