@@ -1,7 +1,8 @@
 ### Selenium Framework with Cucumber
 FIXES:
 1. Java 11, Selenium-3, TestNg-6, using Firefox;
-2. ability to run individual tests in IntelliJ;
+2. ability to run individual tests in IntelliJ:
+   (Run-Configuration: "clean test-compile" + "build")
 3. ability to run tests via <Feature>Runner.java in IntelliJ
 (src/test/java/com/cucumber/framework/runner/SearchFeatureRunner.java)
 4. ability to run tests via testng.xml in IntelliJ
