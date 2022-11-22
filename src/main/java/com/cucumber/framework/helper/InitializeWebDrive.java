@@ -46,25 +46,26 @@ public class InitializeWebDrive {
 
                 case Firefox:
                     FirefoxBrowser firefox = FirefoxBrowser.class.newInstance();
-                    return firefox.getFirefoxDriver(firefox
-                            .getFirefoxCapabilities());
+//                    return firefox.getFirefoxDriver(firefox
+//                            .getFirefoxCapabilities());
+                    return firefox.getFirefoxDriver(firefox.getBrowserOptions());
 
-                case HtmlUnitDriver:
-                    HtmlUnitBrowser htmlUnit = HtmlUnitBrowser.class.newInstance();
-                    return htmlUnit.getHtmlUnitDriver(htmlUnit
-                            .getHtmlUnitDriverCapabilities());
+//                case HtmlUnitDriver:
+//                    HtmlUnitBrowser htmlUnit = HtmlUnitBrowser.class.newInstance();
+//                    return htmlUnit.getHtmlUnitDriver(htmlUnit
+//                            .getHtmlUnitDriverCapabilities());
 
-                case Iexplorer:
-                    IExploreBrowser iExplore = IExploreBrowser.class.newInstance();
-                    return iExplore.getIExplorerDriver(iExplore
-                            .getIExplorerCapabilities());
+//                case Iexplorer:
+//                    IExploreBrowser iExplore = IExploreBrowser.class.newInstance();
+//                    return iExplore.getIExplorerDriver(iExplore
+//                            .getIExplorerCapabilities());
 
-                case PhantomJs:
-                    PhantomJsBrowser jsBrowser = PhantomJsBrowser.class
-                            .newInstance();
-                    return jsBrowser.getPhantomJsDriver(
-                            jsBrowser.getPhantomJsService(),
-                            jsBrowser.getPhantomJsCapability());
+//                case PhantomJs:
+//                    PhantomJsBrowser jsBrowser = PhantomJsBrowser.class
+//                            .newInstance();
+//                    return jsBrowser.getPhantomJsDriver(
+//                            jsBrowser.getPhantomJsService(),
+//                            jsBrowser.getPhantomJsCapability());
 
                 default:
                     throw new NoSutiableDriverFoundException(" Driver Not Found : "
@@ -76,13 +77,14 @@ public class InitializeWebDrive {
         }
     }
 
-    @Before("@chrome or @firefox or @phantomjs or @iexplorer")
+    @Before("not @chrome and not @firefox and not phantomjs and not @iexplorer")
+    //@Before()
     public void before() throws Exception {
         setUpDriver(ObjectRepo.reader.getBrowser());
         oLog.info(ObjectRepo.reader.getBrowser());
     }
 
-    @After("@chrome or @firefox or @phantomjs or @iexplorer")
+    @After("not @chrome and not @firefox and not @phantomjs and not @iexplorer")
     public void after(Scenario scenario) throws Exception {
         tearDownDriver(scenario);
         oLog.info("");

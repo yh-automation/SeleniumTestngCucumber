@@ -28,9 +28,9 @@ public class SearchStepDfn {
 	public void i_am_at_the_home_page() {
 		// Write code here that turns the phrase above into concrete actions
 		System.out.println("HA-HA");
-//		ObjectRepo.driver.get(ObjectRepo.reader.getWebsite());
-//		hPage = new HomePage(ObjectRepo.driver);
-//		ObjectRepo.data.put("HomePage", hPage);
+		ObjectRepo.driver.get(ObjectRepo.reader.getWebsite());
+		hPage = new HomePage(ObjectRepo.driver);
+		ObjectRepo.data.put("HomePage", hPage);
 	}
 
 	@Given("^: I am at the home page$")

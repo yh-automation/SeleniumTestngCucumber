@@ -8,19 +8,13 @@ package com.cucumber.framework.helper.PageObject;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotVisibleException;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.cucumber.framework.helper.Logger.LoggerHelper;
-import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import com.google.common.base.Function;
 
 /**
@@ -76,9 +70,9 @@ public abstract class PageBase{
 	public void waitForElement(WebElement element,int timeOutInSeconds) {
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.ignoring(NoSuchElementException.class);
-		wait.ignoring(ElementNotVisibleException.class);
+		wait.ignoring(ElementNotInteractableException.class);
 		wait.ignoring(StaleElementReferenceException.class);
-		wait.ignoring(ElementNotFoundException.class);
+//		wait.ignoring(ElementNotFoundException.class);
 		wait.pollingEvery(250,TimeUnit.MILLISECONDS);
 		wait.until(elementLocated(element));
 	}

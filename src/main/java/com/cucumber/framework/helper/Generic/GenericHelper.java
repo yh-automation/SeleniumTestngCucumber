@@ -16,7 +16,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+//import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import com.cucumber.framework.helper.Logger.LoggerHelper;
 import com.cucumber.framework.interfaces.IwebComponent;
@@ -78,10 +78,10 @@ public class GenericHelper implements IwebComponent {
 
 	public String takeScreenShot(String name) throws IOException {
 
-		if (driver instanceof HtmlUnitDriver) {
-			oLog.fatal("HtmlUnitDriver Cannot take the ScreenShot");
-			return "";
-		}
+//		if (driver instanceof HtmlUnitDriver) {
+//			oLog.fatal("HtmlUnitDriver Cannot take the ScreenShot");
+//			return "";
+//		}
 
 		File destDir = new File(ResourceHelper.getResourcePath("screenshots/")
 				+ DateTimeHelper.getCurrentDate());
